@@ -1,0 +1,19 @@
+---
+title: "Libs_of_TikTik_Follows_Nov"
+author: '@goldeneelz'
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup}
+libstiktok <- read.csv("~/Desktop/R Files/Libs_of_TikTok_followers_nov11_22xx.csv", header = T)
+libstiktok$Date <- as.Date(libstiktok$Date, format = "%m/%d/%Y")
+libstiktok$Daily.followers <- as.numeric(libstiktok$Daily.followers)
+libstiktok$Total.followers <- as.numeric(libstiktok$Total.followers)
+View(libstiktok)
+plot(x=libstiktok$Date, y=libstiktok$Total.followers, type = "line", ylab = "Total followers", xlab = "Date", main = "@LibsofTikTok Total Followers on Twitter")
+text(x = libstiktok$Date[libstiktok$Date == "2022-11-20"], y = libstiktok$Total.followers[libstiktok$Total.followers == 1533955], pos = 4, cex = 1, "Day of Club Q Shooting")
+text(x = libstiktok$Date[libstiktok$Date == "2022-11-21"], y = libstiktok$Total.followers[libstiktok$Total.followers == 1547505], pos = 2, cex = 1, "Day After Club Q Shooting")
+points(x = libstiktok$Date[libstiktok$Date == "2022-11-21"], y = libstiktok$Total.followers[libstiktok$Total.followers == 1547505], col = "cornflowerblue", pch = 20)
+points(x = libstiktok$Date[libstiktok$Date == "2022-11-20"], y = libstiktok$Total.followers[libstiktok$Total.followers == 1533955], col = "lightcyan4", pch = 20)
+```
